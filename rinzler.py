@@ -52,20 +52,19 @@ async def on_message(message):
     if (authorIsMod(message.author.id) and message.content.lower() == ('sic \'em rinzi')):
         await message.channel.send('grr')
     
-    if (message.channel.name == 'onboarding' and message.content.lower() == ('don\'t be mean')):
-        user = await guild.fetch_member(message.author.id)
-        onboarded = discord.utils.get(guild.roles, id=<role>)
-        notonboarded = discord.utils.get(guild.roles, id=<role>)
-        newuser = discord.utils.get(guild.roles, id=<role>)
-        await message.delete()
-        await user.add_roles(onboarded)
-        await user.add_roles(newuser)
-        await user.remove_roles(notonboarded)
-        return
-
     if (message.channel.name == 'onboarding'):
-        await message.delete()
-        return
+        onbStr = "".join(filter(str.isalpha, message.content.lower()))
+        print(onbStr)
+        if (onbStr == ('dontbemean')):
+            user = await guild.fetch_member(message.author.id)
+            onboarded = discord.utils.get(guild.roles, id=1030858857603403796)
+            notonboarded = discord.utils.get(guild.roles, id=1030867790040678482)
+            newuser = discord.utils.get(guild.roles, id=816403740634382396)
+            await user.add_roles(onboarded)
+            await user.add_roles(newuser)
+            await user.remove_roles(notonboarded)
+        await message.delete()        
+        returnn
         
     if message.channel.name != 'mod-chat':
         return
